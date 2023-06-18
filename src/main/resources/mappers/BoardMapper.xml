@@ -10,6 +10,28 @@
 	select * from tbl_board
 </select>
 
+<!-- 등록 -->
+<insert id="regist">
+	insert into tbl_board (title, content, writer)
+	values (#{title}, #{content}, #{writer})
+</insert>
+
+<!-- 조회 -->
+<select id="read" resultType="org.zerocock.Board.dto.BoardDTO">
+	select * from tbl_board where bno = #{bno}
+</select>
+
+<!-- 수정 -->
+<update id="modify">
+<!-- UPDATE [테이블] SET [열] = '변경할값' WHERE [조건] -->
+	update tbl_board set title = #{title}, content = #{content}, dueDate = now() where bno = #{bno}
+</update>
+
+<!-- 삭제 -->
+<delete id="delete">
+	delete from tbl_board where bno = #{bno} 
+</delete>
+
 
 
 

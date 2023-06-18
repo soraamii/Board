@@ -9,4 +9,16 @@ public interface BoardMapper {
     // 목록
     List<BoardDTO> getList();
 
+    // 등록
+    int regist(BoardDTO boardDTO);
+
+    // 조회
+    BoardDTO read(int bno);
+
+    // 수정
+    int modify(BoardDTO boardDTO);
+
+    // 삭제
+    int delete(int bno);
+
 }

@@ -27,5 +27,66 @@ public class BoardTest {
 
   }
 
+  // 등록 테스트
+  @Test
+  public void registTest() {
+
+    BoardDTO dto = BoardDTO.builder()
+    .title("스윕")
+    .content("삼성 스윕승")
+    .writer("엄상백")
+    .build();
+
+    boardMapper.regist(dto);
+
+    log.info("========================");
+    log.info(dto);
+    log.info("========================");
+
+  }
+
+  // 조회 테스트
+  @Test
+  public void readTest() {
+
+    BoardDTO dto = boardMapper.read(511);
+
+    log.info("=======================");
+    log.info(dto);
+    log.info("=======================");
+
+  }
+
+  // 수정 테스트
+  @Test
+  public void modifyTest() {
+
+    BoardDTO dto = BoardDTO.builder()
+    .bno(504)
+    .title("test")
+    .content("testkk")
+    .build();
+
+    boardMapper.modify(dto);
+
+    log.info("===================");
+    log.info(dto);
+    log.info("===================");
+  }
+
+  // 삭제 테스트
+  @Test
+  public void deleteTest() {
+
+    int result = boardMapper.delete(376);
+
+    if (result == 1) {
+      log.info("성공");
+    } else {
+      log.info("실패");
+    }
+
+
+  }
   
 }

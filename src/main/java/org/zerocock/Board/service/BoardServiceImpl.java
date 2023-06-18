@@ -22,5 +22,29 @@ public class BoardServiceImpl implements BoardService{
 
   }
 
+  @Override
+  public int registBoard(BoardDTO boardDTO) {
+   
+    return boardMapper.regist(boardDTO);
+  }
+
+  @Override
+  public int modifyBoard(BoardDTO boardDTO) {
+    
+    return boardMapper.modify(boardDTO);
+  }
+
+  @Override
+  public BoardDTO readBoard(int bno) {
+    
+    return boardMapper.read(bno);
+  }
+
+  @Override
+  public int deleteBoard(int bno) {
+    
+    return boardMapper.delete(bno);
+  }
+
   
 }

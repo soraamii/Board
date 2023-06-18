@@ -37,7 +37,7 @@ public class BoardApplicationTests {
       log.info("============================");
 
     } catch (SQLException e) {
-      // TODO Auto-generated catch block
+     
       e.printStackTrace();
     }
     
