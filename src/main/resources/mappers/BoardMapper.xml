@@ -7,7 +7,7 @@
 
 <!-- 목록 -->
 <select id="getList" resultType="org.zerocock.Board.dto.BoardDTO">
-	select * from tbl_board
+	select * from tbl_board limit 0, 10
 </select>
 
 <!-- 등록 -->
