@@ -15,6 +15,8 @@ public class BoardServiceImpl implements BoardService{
 
   private final BoardMapper boardMapper;
 
+
+  // 목록
   @Override
   public List<BoardDTO> getList() {
    
@@ -22,24 +24,28 @@ public class BoardServiceImpl implements BoardService{
 
   }
 
+  // 등록
   @Override
   public int registBoard(BoardDTO boardDTO) {
    
     return boardMapper.regist(boardDTO);
   }
 
+  // 수정
   @Override
   public int modifyBoard(BoardDTO boardDTO) {
     
     return boardMapper.modify(boardDTO);
   }
 
+  // 조회
   @Override
   public BoardDTO readBoard(int bno) {
     
     return boardMapper.read(bno);
   }
 
+  // 삭제
   @Override
   public int deleteBoard(int bno) {
     
