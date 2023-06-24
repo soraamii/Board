@@ -10,7 +10,7 @@
 <body>
 
         <!-- Content Start -->
-        <div class="content" layout:fragment="content">
+        <div class="container-fluid pt-4 px-4" layout:fragment="content">
           <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
                 <h6 class="mb-4">Board List</h6>
@@ -18,14 +18,14 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">bno</th>
+                                <th scope="col">NO</th>
                                 <th scope="col">title</th>
                                 <th scope="col">writer</th>
                                 <th scope="col">dueDate</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="blist : ${board}">
+                            <tr th:each="blist : ${board.list}">
                                 <th>[[${blist.bno}]]</th>
                                 <td>[[${blist.title}]]</td>
                                 <td>[[${blist.writer}]]</td>
@@ -33,12 +33,23 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
+										<div class="col-sm-12 col-xl-6">
+											<div class="bg-light rounded h-100 p-4">
+												
+													<div class="btn-toolbar" role="toolbar">
+															<div class="btn-group me-2">
+																	<button type="button" class="btn btn-primary">1</button>
+																	<button type="button" class="btn btn-primary">2</button>
+																	<button type="button" class="btn btn-primary">3</button>
+																	<button type="button" class="btn btn-primary">4</button>
+															</div>
+													</div>
+											</div>
+									</div>
+                </div>    
+            </div>            
+					</div>  
         </div>
-
-
-      </div>
       <!-- Content End -->
   
 </body>

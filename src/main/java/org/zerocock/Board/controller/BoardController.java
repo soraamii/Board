@@ -1,6 +1,5 @@
 package org.zerocock.Board.controller;
 
-import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zerocock.Board.dto.BoardDTO;
+import org.zerocock.Board.dto.PageRequestDTO;
+import org.zerocock.Board.dto.PageResponseDTO;
 import org.zerocock.Board.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -23,11 +24,11 @@ public class BoardController {
 
   // 목록
   @GetMapping("list")
-  public void list(Model model) {
+  public void list(PageRequestDTO pageRequestDTO, Model model) {
     
     log.info("list.....");
 
-    List<BoardDTO> list = boardService.getList();
+    PageResponseDTO<BoardDTO> list = boardService.getList(pageRequestDTO);
 
     model.addAttribute("board", list);
 

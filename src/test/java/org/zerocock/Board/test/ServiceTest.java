@@ -1,11 +1,11 @@
 package org.zerocock.Board.test;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.zerocock.Board.dto.BoardDTO;
+import org.zerocock.Board.dto.PageRequestDTO;
+import org.zerocock.Board.dto.PageResponseDTO;
 import org.zerocock.Board.service.BoardService;
 
 import lombok.extern.log4j.Log4j2;
@@ -21,7 +21,8 @@ public class ServiceTest {
   @Test
   public void getList() {
 
-    List<BoardDTO> list = boardService.getList();
+    PageRequestDTO dto = PageRequestDTO.builder().build();
+    PageResponseDTO<BoardDTO> list = boardService.getList(dto);
 
     log.info(list);
 

@@ -7,7 +7,13 @@
 
 <!-- 목록 -->
 <select id="getList" resultType="org.zerocock.Board.dto.BoardDTO">
-	select * from tbl_board limit 0, 10
+	select * from tbl_board limit #{skip}, #{size}
+</select>
+
+<!-- getListCount(전체 게시물 개수 + 1) 
+굳이 컬럼만 사용 가능한 건 아님, DTO에서 만든 getCountEnd 이용해서 사용 가능 -->
+<select id="getCountEnd" resultType="long">
+	select count(*) from (select * from tbl_board where bno > 0 limit #{countEnd}) board
 </select>
 
 <!-- 등록 -->

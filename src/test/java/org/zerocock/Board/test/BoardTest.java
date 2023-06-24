@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.zerocock.Board.dto.BoardDTO;
+import org.zerocock.Board.dto.PageRequestDTO;
 import org.zerocock.Board.mappers.BoardMapper;
 
 import lombok.extern.log4j.Log4j2;
@@ -21,7 +22,8 @@ public class BoardTest {
   @Test
   public void getList() {
 
-    List<BoardDTO> list = boardMapper.getList();
+    PageRequestDTO dto = PageRequestDTO.builder().build();
+    List<BoardDTO> list = boardMapper.getList(dto);
 
     log.info(list);
 

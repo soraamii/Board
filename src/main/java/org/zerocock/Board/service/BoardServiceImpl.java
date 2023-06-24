@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.zerocock.Board.dto.BoardDTO;
+import org.zerocock.Board.dto.PageRequestDTO;
+import org.zerocock.Board.dto.PageResponseDTO;
 import org.zerocock.Board.mappers.BoardMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -18,9 +20,15 @@ public class BoardServiceImpl implements BoardService{
 
   // 목록
   @Override
-  public List<BoardDTO> getList() {
+  public PageResponseDTO<BoardDTO> getList(PageRequestDTO pageRequestDTO) {
    
-    return boardMapper.getList();
+     List<BoardDTO> list = boardMapper.getList(pageRequestDTO);
+     long total = boardMapper.getCountEnd(pageRequestDTO);
+
+    return PageResponseDTO.<BoardDTO>withAll()
+          .list(list)
+          .total(total)
+          .build();
 
   }
 
