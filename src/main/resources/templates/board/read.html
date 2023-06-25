@@ -33,13 +33,53 @@
                       <input type="text" class="form-control" id="exampleInputPassword1" th:value="${read.dueDate}" readonly>
                     </div>
                     <a th:href="@{/board/list}" class="btn btn-primary m-2">LIST</a>
-                  <button type="button" class="btn btn-warning m-2">MDOFIY</button>
-                  <button type="button" class="btn btn-danger m-2">DELETE</button>
+                    <a th:href="@{/board/modify/{bno}(bno=${bno})}" class="btn btn-warning m-2">MDOFIY</a>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">DELETE</button>
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <form method="post" class="actionForm">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">DELETE</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            게시글을 삭제하시겠습니까?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary btnDeleteModal">OK</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CLOSE</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
   </div>
 <!-- Form End -->
+
+
+<script layout:fragment="script" th:inline="javascript">
+
+const {bno} = [[${read}]];
+const btnDelete = document.querySelector(".btnDelete");
+const actionForm = document.querySelector(".actionForm");
+const btnDeleteModal = document.querySelector(".btnDeleteModal");
+
+// 모달에서 게시물 삭제 위한 OK 버튼
+btnDeleteModal.addEventListener("click", e => {
+
+  // 
+  actionForm.setAttribute("action", `/board/delete/${bno}`);
+  actionForm.submit();
+
+})
+
+</script>
 
 </body>
 </html>

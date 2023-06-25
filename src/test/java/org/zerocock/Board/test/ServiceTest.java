@@ -78,13 +78,8 @@ public class ServiceTest {
   @Test
   public void deleteTest() {
 
-    int result = boardService.deleteBoard(375);
+    boardService.deleteBoard(512);
 
-    if (result == 1) {
-      log.info("성공");
-    } else {
-      log.info("실패");
-    }
 
   }
 

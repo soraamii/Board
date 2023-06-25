@@ -23,6 +23,6 @@ public interface BoardMapper {
     int modify(BoardDTO boardDTO);
 
     // 삭제
-    int delete(int bno);
+    void delete(int bno);
 
 }

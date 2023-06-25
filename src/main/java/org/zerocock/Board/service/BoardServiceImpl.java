@@ -55,9 +55,9 @@ public class BoardServiceImpl implements BoardService{
 
   // 삭제
   @Override
-  public int deleteBoard(int bno) {
+  public void deleteBoard(int bno) {
     
-    return boardMapper.delete(bno);
+    boardMapper.delete(bno);
   }
 
   

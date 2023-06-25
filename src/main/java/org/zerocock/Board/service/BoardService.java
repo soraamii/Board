@@ -22,7 +22,7 @@ public interface BoardService {
   int modifyBoard(BoardDTO boardDTO);
 
   // 삭제
-  int deleteBoard(int bno);
+  void deleteBoard(int bno);
   
   
 }

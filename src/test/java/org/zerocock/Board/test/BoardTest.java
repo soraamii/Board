@@ -80,13 +80,7 @@ public class BoardTest {
   @Test
   public void deleteTest() {
 
-    int result = boardMapper.delete(376);
-
-    if (result == 1) {
-      log.info("성공");
-    } else {
-      log.info("실패");
-    }
+    boardMapper.delete(510);
 
 
   }

@@ -83,6 +83,26 @@ public class BoardController {
   }
 
   // 수정(POST)
+  @PostMapping("modify/{bno}")
+  public String postModify(@PathVariable("bno") int bno, BoardDTO boardDTO) {
+
+    log.info(("POST Modify.............."));
+
+    boardService.modifyBoard(boardDTO);
+
+    return "redirect:/board/read/" + bno;
+
+  }
+    
+  // 삭제(Update)
+  @PostMapping("delete/{bno}")
+  public String delete(@PathVariable("bno") int bno) {
+
+    boardService.deleteBoard(bno);
+
+    return "redirect:/board/list";
+  }
+
   
   
 }
