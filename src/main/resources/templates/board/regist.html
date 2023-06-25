@@ -1,11 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Board</title>
 </head>
 <body>
-  <h1>regist</h1>
+  <div class="container-fluid pt-4 px-4" layout:fragment="content">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Basic Form</h6>
+                <form name="regist" method="post" action="/board/regist" class="formData">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Content</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" name="content">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Writer</label>
+                      <input type="text" class="form-control" id="exampleInputPassword1" name="writer">
+                  </div>
+                    <div class="button_wrap">
+                    <button type="submit" class="btn btn-primary btnRegist">REGIST</button>
+                    <a th:href="@{/board/list}" class="btn btn-danger m-2">EXIT</a>
+                  </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <script layout:fragment="script" th:inline="javascript">
+
+    const btnRegist = document.querySelector(".btnRegist");
+
+    btnRegist.addEventListener("click", e => {
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      regist.submit();
+
+    },false)
+
+
+
+  </script>
 </body>
 </html>

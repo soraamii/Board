@@ -10,19 +10,19 @@ import org.zerocock.Board.dto.PageResponseDTO;
 public interface BoardService {
 
   // 목록
-  public PageResponseDTO<BoardDTO> getList(PageRequestDTO pageRequestDTO);
+  PageResponseDTO<BoardDTO> getList(PageRequestDTO pageRequestDTO);
 
   // 등록
-  public int registBoard(BoardDTO boardDTO);
+  int registBoard(BoardDTO boardDTO);
 
   // 조회
-  public BoardDTO readBoard(int bno);
+  BoardDTO readBoard(int bno);
 
   // 수정
-  public int modifyBoard(BoardDTO boardDTO);
+  int modifyBoard(BoardDTO boardDTO);
 
   // 삭제
-  public int deleteBoard(int bno);
+  int deleteBoard(int bno);
   
   
 }

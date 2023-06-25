@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zerocock.Board.dto.BoardDTO;
 import org.zerocock.Board.dto.PageRequestDTO;
@@ -35,7 +36,7 @@ public class BoardController {
   }
 
   // 등록(GET)
-  @GetMapping("/regist")
+  @GetMapping("regist")
   public void getRegist() {
 
     log.info("GET Regist....");
@@ -43,6 +44,13 @@ public class BoardController {
   }
 
   // 등록(POST)
+  @PostMapping("regist")
+  public String postRegist(BoardDTO boardDTO) {
+
+    boardService.registBoard(boardDTO);
+
+    return "redirect:/board/list";
+  }
 
   // 조회
   @GetMapping("read/{bno}")

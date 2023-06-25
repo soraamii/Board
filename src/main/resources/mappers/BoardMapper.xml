@@ -7,7 +7,7 @@
 
 <!-- 목록 -->
 <select id="getList" resultType="org.zerocock.Board.dto.BoardDTO">
-	select * from tbl_board limit #{skip}, #{size}
+	select * from tbl_board order by bno desc limit #{skip}, #{size}
 </select>
 
 <!-- getListCount(전체 게시물 개수 + 1) 

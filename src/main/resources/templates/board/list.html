@@ -5,11 +5,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+
+  <title>Board</title>
 </head>
 <body>
-
-	<!-- Content Start -->
 	<div class="container-fluid pt-4 px-4" layout:fragment="content">
 		<div class="col-12">
 			<div class="bg-light rounded h-100 p-4">
@@ -24,9 +23,10 @@
 													<th scope="col">dueDate</th>
 											</tr>
 									</thead>
-									<tbody>
-											<tr th:each="blist : ${board.list}">
-													<th>[[${blist.bno}]]</th>
+									<tbody class="boardRead">
+											<!--/* data- 속성 사용: bno 값으로 read 페이지로 이동 */-->
+											<tr th:each="blist : ${board.list}" th:data-bno="${blist.bno}">
+													<td>[[${blist.bno}]]</td>
 													<td>[[${blist.title}]]</td>
 													<td>[[${blist.writer}]]</td>
 													<td>[[${blist.dueDate}]]</td>
@@ -37,6 +37,7 @@
 									<div class="bg-light rounded h-100 p-4">
 											<div class="btn-toolbar" role="toolbar">
 														<div class="btn-group me-2 paging">
+															<button type="button" class="btn btn-warning m-2 btnRegist">Regist</button>
 														</div>
 											</div>
 									</div>
@@ -44,53 +45,42 @@
 					</div>    
 			</div>
 		</div>
-			<!-- <form>요소를 사용하여 GET 방식으로 데이터를 전송  
-		  action: 데이터 전송할 URL / method: HTTP 요청 메소드 지정-->
-		<form action="/board/list" method="get" class="actionForm">
-			<!-- hidden으로 숨겨서 페이지 요청에 필요한 데이터를 서버로 전송
-				thymeleaf방식으로 value 값 전달 -->
-			<input type="hidden" name="page" th:value="${pageRequestDTO.page}">
-			<input type="hidden" name="size" th:value="${pageRequestDTO.size}">
-		</form>            
+
 	</div>
-	<!-- Content End -->
 
 
 
+	<!--/* js 사용할 거면 layout에도 fragment 넣어줘야 함 */-->
 	<script layout:fragment="script" th:inline="javascript">
 
-		function makePages(page, size, total) {
-			console.log(page, size, total);
+		const boardRead = document.querySelector(".boardRead");
+		const regist = document.querySelector(".btnRegist");
 
-			// 시작 페이지 번호
-			const startNum = (Math.ceil(page/10) * 10) - 9;
+		// boardRead 변수로 read 페이지로 이동
+		boardRead.addEventListener("click", e => {
+			// e.preventDefault();
+			// e.stopPropagation();
 
-			console.log("startNum: " + startNum);
+			// target 찾기
+			const target = e.target;
 
-			// 페이징 생성 변수
-			let pagingResult = "";
-
-			// 현재 페이지가 1이 아닐 때만 이전 페이지 표시
-			startNum != 1 ? pagingResult += `<a href="${startNum - 1}" class="btn-group me-2 paging"><</a>` : "";
-		
-			// 페이징 번호 변수
-			let temp = startNum;
-
-
-			while(true) {
-				if(temp * 10 > total) {
-					break;
-				}
-
-				console.log(temp);
-
-				temp == page ? pagingResult += `<a href="${temp}" class="">${temp}</a>` : pagingResult += `<a href="${temp}" class="">${temp}</a>`;
-
-			}
-
-			const actionForm = document.querySelector(".actionForm");
+			// bno 값 가져오기
+			const bno = target.closest("tr").getAttribute("data-bno")
 			
-		}
+			console.log(bno);
+
+			// (일단) read 페이지로 이동
+			// window.location.href = 'URL'; -> 해당 페이지로 이동
+			window.location.href = "/board/read/" + bno;  
+
+			// Capturing 막기 위해 false 넣기
+		}, false)
+
+		regist.addEventListener("click", e => {
+			window.location.href = "/board/regist";
+		})
+
+
 	</script>
 
 </body>
