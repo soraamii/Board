@@ -13,8 +13,9 @@ function makePages(page, size, total) {
 
   // 이전 페이지 버튼 생성
   if(startNum !== 1) {
-    `<a class="btn btn-primary" href="${startNum-1}"><</a>`
+   result += `<a class="btn btn-primary" href="${startNum-1}"><</a>`
   }
+  
 
   // 실제 페이지 번호 버튼 생성
   let temp = startNum;
@@ -24,15 +25,16 @@ function makePages(page, size, total) {
 
   while(true) {
 
-    if(temp * size > total) {
-      break;
-    }
+    if(temp * size > total){
+
+    break;
+  }
 
     console.log(temp);
 
     result += `<a class="btn btn-primary" href="${temp}">${temp}</a>`
 
-    console.log("result", result)
+    //console.log("result", result)
     temp++;
 
   }
@@ -41,7 +43,7 @@ function makePages(page, size, total) {
     result += `<a class="btn btn-primary" href="${startNum + 10}">></a>`
   }
 
-  console.log(result);
+  //console.log(result);
   return result;
 
 

@@ -42,7 +42,7 @@ public class PageRequestDTO {
   }
 
   public int getSkip() {
-    return (this.page - 1) * this.page;
+    return (this.page - 1) * this.size;
   }
 
   // 다음 버튼 출력을 위한 개수 처리
